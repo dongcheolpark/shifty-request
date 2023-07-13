@@ -1,0 +1,15 @@
+module ShiftyRequest
+  module Model
+    class EditAttendance
+      attr_reader original_attendance: Attendance
+
+      def initialize:(Attendance) -> untyped
+
+      def get_adjusted_clock_time: -> ClockTime?
+
+      def get_random_offset: -> Rational
+
+      def move_randomly_for_the_excess_time: (ClockTime)-> ClockTime
+    end
+  end
+end

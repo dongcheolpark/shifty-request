@@ -1,7 +1,7 @@
 module ShiftyRequest
   class Command
     @argv: Array[String]
-    @request: Request
+    @edit_attendance: EditAttendance
 
     def initialize:(Array[string]) -> untyped
     def self.run:(Array[String]) -> untyped

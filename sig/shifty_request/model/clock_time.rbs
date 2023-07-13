@@ -1,0 +1,10 @@
+module ShiftyRequest
+  module Model
+    class ClockTime
+      attr_reader in_time: DateTime
+      attr_reader out_time: DateTime
+
+      def over_time: -> Rational
+    end
+  end
+end
