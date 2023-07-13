@@ -104,6 +104,7 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
+    rbs (3.1.0)
     rufo (0.16.1)
     thor (1.2.2)
     tzinfo (2.0.6)
@@ -116,6 +117,7 @@ PLATFORMS
 DEPENDENCIES
   httparty
   rake
+  rbs
   rspec-core!
   rspec-expectations!
   rspec-mocks!
