@@ -1,0 +1,5 @@
+module ShiftyRequest
+  class LoadAttendance
+    def parse_response_body: -> Array[Attendance]
+  end
+end

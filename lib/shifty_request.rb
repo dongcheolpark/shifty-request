@@ -2,6 +2,8 @@
 
 require 'dotenv/load'
 
+require_relative 'ShiftyRequest/Model/attendance'
+
 require_relative 'ShiftyRequest/command'
 require_relative 'ShiftyRequest/api_request'
 require_relative 'ShiftyRequest/edit_attendance'

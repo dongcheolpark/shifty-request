@@ -9,6 +9,13 @@ module ShiftyRequest
     def call
       response = HTTParty.post(url, headers: headers, body: body.to_json)
       puts response
+
+      parse_response_body(body: JSON.parse(response.body))
+    end
+
+    def parse_response_body(body:)
+      attendances = body['attendances']
+      attendances.map { |attendance| Model::Attendance.new(attendance) }
     end
 
     def body
