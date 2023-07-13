@@ -5,4 +5,4 @@ end
 
 require_relative 'ShiftyRequest/command'
 
-ShiftyRequest::Command.run
+ShiftyRequest::Command.run(ARGV)
