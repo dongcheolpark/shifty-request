@@ -10,8 +10,8 @@ module ShiftyRequest
       WORKING_HOURS = Rational(9, 24)
 
       def initialize(clock_in_time, clock_out_time)
-        @clock_in_time = DateTime.parse(clock_in_time)
-        @clock_out_time = DateTime.parse(clock_out_time)
+        @clock_in_time = clock_in_time.is_a?(DateTime) ? clock_in_time : DateTime.parse(clock_in_time)
+        @clock_out_time = clock_out_time.is_a?(DateTime) ? clock_out_time : DateTime.parse(clock_out_time)
       end
 
       def proper_time?(start_at: DateTime.new(2000, 1, 1, 10, 0, 0, '+9'), end_at: DateTime.new(2000, 1, 1, 19, 0, 0, '+9'))
@@ -26,14 +26,14 @@ module ShiftyRequest
         clock_out_time - clock_in_time
       end
 
-      def align_to_start_time!(start_at: DateTime.new(2000, 1, 1, 10, 0, 0, '+9'))
+      def align_to_start_time(start_at: DateTime.new(1, 1, 1, 10, 0, 0, '+9'))
+        start_at = DateTime.new(@clock_in_time.year, @clock_in_time.month, @clock_in_time.day, start_at.hour, start_at.min, start_at.sec, '+9')
         gap = start_at - @clock_in_time
-        +gap
+        self + gap
       end
 
       def +(other)
-        @clock_in_time += other
-        @clock_out_time += other
+        ClockTime.new(@clock_in_time + other, @clock_out_time + other)
       end
     end
   end
