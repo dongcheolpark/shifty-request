@@ -20,7 +20,7 @@ module ShiftyRequest
           if attendance['clock_in_time'].nil? || attendance['clock_out_time'].nil?
             next
           else
-            Model::Attendance.new(attendance.symbolize_keys)
+            Model::Attendance.new(attendance.transform_keys(&:to_sym))
           end
         end.compact
       end
