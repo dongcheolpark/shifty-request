@@ -35,6 +35,10 @@ module ShiftyRequest
       def +(other)
         ClockTime.new(@clock_in_time + other, @clock_out_time + other)
       end
+
+      def -(other)
+        ClockTime.new(@clock_in_time - other, @clock_out_time - other)
+      end
     end
   end
 end

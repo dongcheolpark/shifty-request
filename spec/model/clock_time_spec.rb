@@ -12,6 +12,15 @@ RSpec.describe 'clock_time test' do
       expect(clock_time.proper_time?).to be_truthy
     end
 
+    it '초과근무 했다면' do
+      clock_time = ShiftyRequest::Model::ClockTime.new(
+        '2023-06-05T09:00:00+09:00',
+        '2023-06-05T20:00:00+09:00',
+      )
+
+      expect(clock_time.proper_time?).to be_truthy
+    end
+
     it '1시간 늦게 출근했다면' do
       clock_time = ShiftyRequest::Model::ClockTime.new(
         '2023-06-05T11:00:00+09:00',
