@@ -26,5 +26,17 @@ RSpec.describe 'attendance test' do
 
       expect(attendance.proper_time?).to be_falsey
     end
+
+    it '1시간 빨리 퇴근했다면' do
+      attendance = ShiftyRequest::Model::Attendance.new(
+        {
+          attendance_id: '1234',
+          clock_in_time: '2023-06-05T10:00:00+09:00',
+          clock_out_time: '2023-06-05T18:00:00+09:00',
+        }
+      )
+
+      expect(attendance.proper_time?).to be_falsey
+    end
   end
 end
