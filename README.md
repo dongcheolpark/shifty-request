@@ -11,11 +11,15 @@
 
 `Ruby 3.1.2`, `Bundler`가 필요합니다. RVM을 사용하고 있다면 다음 명령어를 터미널에 입력하세요.
 
-> rvm use
+```shell
+rvm use
+```
 
 `Bundler`는 `Ruby`를 설치하면 같이 설치됩니다. 의존성 패키지(Gem)을 설치하기 위해 다음 명령어를 입력하세요. 
 
-> bundle install
+```shell
+bundle install
+```
 
 ## 실행법
 
@@ -28,7 +32,9 @@
 
 도구를 실행하려면 다음 명령어를 입력하세요.
 
-> rake run
+```shell
+rake run
+```
 
 ## Contributing
 
