@@ -6,7 +6,13 @@ module ShiftyRequest
       class << self
         def run(attendances:)
           attendances.map do |attendance|
-            Model::EditAttendance.new(attendance)
+            puts attendance.clock_time
+            puts attendance.clock_time.proper_time?
+            if attendance.clock_time.proper_time?
+              next
+            else
+              Model::EditAttendance.new(attendance)
+            end
           end.compact
         end
       end

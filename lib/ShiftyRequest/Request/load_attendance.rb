@@ -27,7 +27,7 @@ module ShiftyRequest
       def body
         {
           "attendances": {
-            "date_ranges": [['2023-05-01T00:00:00+09:00', '2023-07-13T23:59:59+09:00']],
+            "date_ranges": [['2023-05-16T00:00:00+09:00', '2023-05-16T23:59:59+09:00']],
             "employee_ids": [ENV['EMPLOYEE_ID'].to_i],
           },
         }

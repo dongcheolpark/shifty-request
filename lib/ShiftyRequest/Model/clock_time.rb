@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 require 'date'
+require 'active_support/all'
 
 module ShiftyRequest
   module Model
@@ -15,7 +16,7 @@ module ShiftyRequest
       end
 
       def proper_time?(start_at: DateTime.new(2000, 1, 1, 10, 0, 0, '+9'), end_at: DateTime.new(2000, 1, 1, 19, 0, 0, '+9'))
-        @in_time.strftime('%H%M%S%N') <= start_at.strftime('%H%M%S%N') && end_at.strftime('%H%M%S%N') <= @out_time.strftime('%H%M%S%N')
+        @in_time.only_time <= start_at.only_time && end_at.only_time <= @out_time.only_time
       end
 
       def over_time
