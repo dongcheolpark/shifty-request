@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 require 'httparty'
+require 'json'
 
 module ShiftyRequest
   class EditAttendance
@@ -28,11 +29,11 @@ module ShiftyRequest
           ],
           "data": {
             "requestType": 'edit_attendance',
-            "attendance_id": 56756437,
-            "previous_clock_in_time": '2023-05-11T09:13:14+09:00',
-            "previous_clock_out_time": '2023-05-11T18:34:54+09:00',
-            "clock_in_time": '2023-05-11T09:46:14+09:00',
-            "clock_out_time": '2023-05-11T19:05:54+09:00',
+            "attendance_id": 56964689,
+            "previous_clock_in_time": '2023-05-15T00:48:31.654Z',
+            "previous_clock_out_time": '2023-05-15T09:51:37.766Z',
+            "clock_in_time": '2023-05-15T00:55:31.654Z',
+            "clock_out_time": '2023-05-15T10:03:37.766Z',
             "tags": [
               'past_attendance',
             ],
@@ -42,8 +43,7 @@ module ShiftyRequest
     end
 
     def call
-      puts @headers
-      response = HTTParty.post(@url, headers: @headers)
+      response = HTTParty.post(@url, headers: @headers, body: @body.to_json)
       puts response
     end
   end
