@@ -1,0 +1,11 @@
+module ShiftyRequest
+  class EditAttendance
+    @body: Hash[untyped, String]
+    @headers: Hash[untyped, String]
+    @url: String
+
+    def call: -> untyped
+
+    def initialize: -> untyped
+  end
+end
