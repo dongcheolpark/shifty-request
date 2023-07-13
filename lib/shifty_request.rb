@@ -1,4 +1,8 @@
 # frozen_string_literal: true
 
-class ShiftyRequest
+module ShiftyRequest
 end
+
+require_relative 'ShiftyRequest/command'
+
+ShiftyRequest::Command.run
