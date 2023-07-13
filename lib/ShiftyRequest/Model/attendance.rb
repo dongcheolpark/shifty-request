@@ -9,8 +9,8 @@ module ShiftyRequest
 
       def initialize(dto)
         @attendance_id = dto['attendance_id']
-        @clock_in_time = dto['clock_in_time']
-        @clock_out_time = dto['clock_out_time']
+        @clock_in_time = DateTime.parse(dto['clock_in_time'])
+        @clock_out_time = DateTime.parse(dto['clock_out_time'])
       end
     end
   end

@@ -1,5 +1,7 @@
 module ShiftyRequest
   class LoadAttendance
-    def parse_response_body: -> Array[Attendance]
+    def call: -> Array[Model::Attendance]
+
+    def parse_response_body: -> Array[Model::Attendance]
   end
 end

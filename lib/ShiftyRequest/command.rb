@@ -3,8 +3,8 @@
 module ShiftyRequest
   class Command
     def initialize(argv)
-      @edit_attendance = EditAttendance.new
-      @load_attendance = LoadAttendance.new
+      @edit_attendance = Request::EditAttendance.new
+      @load_attendance = Request::LoadAttendance.new
       @argv = argv
     end
 
@@ -15,7 +15,7 @@ module ShiftyRequest
     def run
       puts '출퇴근 기록을 불러옵니다.'
       attendances = @load_attendance.call
-      attendances.each { |a| puts a.attendance_id }
+      attendances.each { |a| puts a.clock_in_time }
       puts '수정 요청 전송을 시작합니다.'
       #@edit_attendance.call
     end
