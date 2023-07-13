@@ -11,8 +11,8 @@ module ShiftyRequest
 
       def call(edit_attendances)
         edit_attendances.each do |attendance|
-          puts body(attendance)
-          # response = HTTParty.post(url, headers: headers, body: body)
+          response = HTTParty.post(url, headers: headers, body: body(attendance))
+          puts response
         end
       end
 
