@@ -2,7 +2,7 @@
 module ShiftyRequest
   class APIRequest
     def url
-      'https://shiftee.io/api/request'
+      'https://shiftee.io/api'
     end
 
     def headers

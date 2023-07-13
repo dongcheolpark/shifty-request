@@ -4,6 +4,10 @@ require 'json'
 
 module ShiftyRequest
   class EditAttendance < APIRequest
+    def url
+      super + '/request'
+    end
+
     def call
       response = HTTParty.post(url, headers: headers, body: body.to_json)
       puts response

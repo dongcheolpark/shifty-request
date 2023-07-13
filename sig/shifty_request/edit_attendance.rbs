@@ -3,5 +3,7 @@ module ShiftyRequest
     def body: -> Hash[untyped, String]
 
     def call: -> untyped
+
+    def url: -> String
   end
 end
