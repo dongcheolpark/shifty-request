@@ -17,7 +17,7 @@ module ShiftyRequest
       attendances = @load_attendance.call
       edit_attendances = Service::MakeEditAttendanceService.run(attendances:)
       puts '수정 요청 전송을 시작합니다.'
-      #@edit_attendance.call
+      @edit_attendance.call(edit_attendances)
     end
   end
 end
