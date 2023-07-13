@@ -57,3 +57,4 @@ build-iPhoneSimulator/
 
 .idea
 .env
+.gem_rbs_collection
