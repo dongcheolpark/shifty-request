@@ -24,7 +24,7 @@ module ShiftyRequest
           ],
           "requested_employee_ids_sequence": [
             [
-              686455,
+              ENV['REQUESTED_EMPLOYEE_ID'],
             ],
           ],
           "followed_employee_ids_sequence": [
