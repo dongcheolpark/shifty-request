@@ -54,4 +54,17 @@ RSpec.describe 'clock_time test' do
       expect(work_time).to eq(Rational(9, 24))
     end
   end
+
+  describe 'over_time 메소드' do
+    it '1시간 초과 근무 했다면' do
+      clock_time = ShiftyRequest::Model::ClockTime.new(
+        '2023-06-05T10:00:00+09:00',
+        '2023-06-05T20:00:00+09:00', # 1시간 늦게 퇴근
+      )
+
+      over_time = clock_time.over_time
+
+      expect(over_time).to eq(Rational(1, 24))
+    end
+  end
 end
