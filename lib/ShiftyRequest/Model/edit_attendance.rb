@@ -7,10 +7,8 @@ module ShiftyRequest
     attr_reader :clock_out_time
 
     class EditAttendance
-      def initialize(original_attendance, clock_in_time, clock_out_time)
+      def initialize(original_attendance)
         @original_attendance = original_attendance
-        @clock_in_time = clock_in_time
-        @clock_out_time = clock_out_time
       end
     end
   end
