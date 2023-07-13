@@ -26,7 +26,7 @@ module ShiftyRequest
         clock_out_time - clock_in_time
       end
 
-      def align_to_start_time(start_at: DateTime.new(1, 1, 1, 10, 0, 0, '+9'))
+      def get_time_aligned_by_start_time(start_at: DateTime.new(1, 1, 1, 10, 0, 0, '+9'))
         start_at = DateTime.new(@clock_in_time.year, @clock_in_time.month, @clock_in_time.day, start_at.hour, start_at.min, start_at.sec, '+9')
         gap = start_at - @clock_in_time
         self + gap

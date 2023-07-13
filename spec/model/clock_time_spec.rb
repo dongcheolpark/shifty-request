@@ -68,14 +68,14 @@ RSpec.describe 'clock_time test' do
     end
   end
 
-  describe 'align_to_start_time 테스트' do
+  describe 'get_time_aligned_by_start_time 테스트' do
     it '시작 시간으로 맞춰져야 함' do
       clock_time = ShiftyRequest::Model::ClockTime.new(
         '2023-06-05T09:00:00+09:00', # 1시간 빠름
         '2023-06-05T19:00:00+09:00',
       )
 
-      new_clock_time = clock_time.align_to_start_time
+      new_clock_time = clock_time.get_time_aligned_by_start_time
 
       expect(new_clock_time.clock_in_time).to eq(DateTime.parse('2023-06-05T10:00:00+09:00'))
       expect(new_clock_time.clock_out_time).to eq(DateTime.parse('2023-06-05T20:00:00+09:00'))
@@ -87,7 +87,7 @@ RSpec.describe 'clock_time test' do
         '2023-06-05T19:00:00+09:00',
       )
 
-      new_clock_time = clock_time.align_to_start_time
+      new_clock_time = clock_time.get_time_aligned_by_start_time
 
       expect(new_clock_time.clock_in_time).to eq(DateTime.parse('2023-06-05T10:00:00+09:00'))
       expect(new_clock_time.clock_out_time).to eq(DateTime.parse('2023-06-05T18:00:00+09:00'))
