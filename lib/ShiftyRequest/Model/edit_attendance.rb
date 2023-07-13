@@ -11,8 +11,8 @@ module ShiftyRequest
 
       def get_adjusted_clock_time
         return nil if original_attendance.proper_time?
-
-        overtime = original_attendance.clock_time - WORKING_HOURS
+        result = ClockTime.new(original_attendance.clock_time.clock_in_time, original_attendance.clock_time.clock_out_time)
+        overtime = original_attendance.clock_time.over_time
       end
     end
   end

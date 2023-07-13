@@ -25,6 +25,16 @@ module ShiftyRequest
       def work_time
         clock_out_time - clock_in_time
       end
+
+      def align_to_start_time!(start_at: DateTime.new(2000, 1, 1, 10, 0, 0, '+9'))
+        gap = start_at - @clock_in_time
+        +gap
+      end
+
+      def +(other)
+        @clock_in_time += other
+        @clock_out_time += other
+      end
     end
   end
 end
