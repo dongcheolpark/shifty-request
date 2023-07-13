@@ -3,7 +3,7 @@
 module ShiftyRequest
   class Command
     def initialize(argv)
-      @request = EditAttendance.new
+      @edit_attendance = EditAttendance.new
       @argv = argv
     end
 
@@ -12,9 +12,9 @@ module ShiftyRequest
     end
 
     def run
+      puts '출퇴근 기록을 불러옵니다.'
       puts '수정 요청 전송을 시작합니다.'
-
-      @request.call
+      @edit_attendance.call
     end
   end
 end

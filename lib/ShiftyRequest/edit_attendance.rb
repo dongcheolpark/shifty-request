@@ -6,14 +6,6 @@ module ShiftyRequest
   class EditAttendance
     def initialize
       @url = 'https://shiftee.io/api/request'
-      @headers = {
-        "Content-Type": 'application/json',
-        "Expires": 'Sat, 01 Jan 2000 00:00:00 GMT',
-        "Cookie": ENV['COOKIE'],
-        "Accept-Encoding": 'gzip, deflate, br',
-        "Accept-Language": 'ko,en-US;q=0.9,en;q=0.8,ko-KR;q=0.7,ja;q=0.6',
-        "Accept": '*/*',
-      }
       @body =
         {
           "approval_sequence": [
@@ -43,7 +35,7 @@ module ShiftyRequest
     end
 
     def call
-      response = HTTParty.post(@url, headers: @headers, body: @body.to_json)
+      response = HTTParty.post(@url, headers: BasicHeader.get, body: @body.to_json)
       puts response
     end
   end
