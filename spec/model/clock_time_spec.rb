@@ -86,8 +86,8 @@ RSpec.describe 'clock_time test' do
 
       new_clock_time = clock_time.get_time_aligned_by_start_time
 
-      expect(new_clock_time.clock_in_time).to eq(DateTime.parse('2023-06-05T10:00:00+09:00'))
-      expect(new_clock_time.clock_out_time).to eq(DateTime.parse('2023-06-05T20:00:00+09:00'))
+      expect(new_clock_time.in_time).to eq(DateTime.parse('2023-06-05T10:00:00+09:00'))
+      expect(new_clock_time.out_time).to eq(DateTime.parse('2023-06-05T20:00:00+09:00'))
     end
 
     it '시작 시간으로 맞춰져야 함' do
@@ -98,8 +98,8 @@ RSpec.describe 'clock_time test' do
 
       new_clock_time = clock_time.get_time_aligned_by_start_time
 
-      expect(new_clock_time.clock_in_time).to eq(DateTime.parse('2023-06-05T10:00:00+09:00'))
-      expect(new_clock_time.clock_out_time).to eq(DateTime.parse('2023-06-05T18:00:00+09:00'))
+      expect(new_clock_time.in_time).to eq(DateTime.parse('2023-06-05T10:00:00+09:00'))
+      expect(new_clock_time.out_time).to eq(DateTime.parse('2023-06-05T18:00:00+09:00'))
     end
   end
 end

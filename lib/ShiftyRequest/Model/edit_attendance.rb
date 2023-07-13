@@ -33,6 +33,10 @@ module ShiftyRequest
         result = move_randomly_for_the_excess_time(result)
         result
       end
+
+      def to_s
+        "origin_attendance: #{original_attendance}, clock_time: #{get_adjusted_clock_time}"
+      end
     end
   end
 end

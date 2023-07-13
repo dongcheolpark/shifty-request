@@ -1,7 +1,7 @@
 module ShiftyRequest
   module Service
     class MakeEditAttendanceService
-      def run: (attendances: Array[Model::Attendance]) -> Array[Model::EditAttendance]
+      def self.run: (attendances: Array[Model::Attendance]) -> Array[Model::EditAttendance]
     end
   end
 end

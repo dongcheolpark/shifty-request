@@ -2,11 +2,13 @@
 
 module ShiftyRequest
   module Service
-    class MakeEditAttendanceService
-      def run(attendances:)
-        attendances.map do |attendance|
-          Model::EditAttendance(attendance)
-        end.compact
+    module MakeEditAttendanceService
+      class << self
+        def run(attendances:)
+          attendances.map do |attendance|
+            Model::EditAttendance.new(attendance)
+          end.compact
+        end
       end
     end
   end

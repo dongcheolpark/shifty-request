@@ -34,8 +34,8 @@ RSpec.describe 'edit_attendance test' do
         result = edit_attendance.get_adjusted_clock_time
 
         expect(result.work_time).to eq(Rational(10, 24))
-        expect(result.clock_in_time).to be_between(DateTime.parse('2023-06-05T09:00:00+09:00'), DateTime.parse('2023-06-05T10:00:00+09:00'))
-        expect(result.clock_out_time).to be_between(DateTime.parse('2023-06-05T19:00:00+09:00'), DateTime.parse('2023-06-05T20:00:00+09:00'))
+        expect(result.in_time).to be_between(DateTime.parse('2023-06-05T09:00:00+09:00'), DateTime.parse('2023-06-05T10:00:00+09:00'))
+        expect(result.out_time).to be_between(DateTime.parse('2023-06-05T19:00:00+09:00'), DateTime.parse('2023-06-05T20:00:00+09:00'))
       end
     end
   end

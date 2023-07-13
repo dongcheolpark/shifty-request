@@ -15,7 +15,8 @@ module ShiftyRequest
     def run
       puts '출퇴근 기록을 불러옵니다.'
       attendances = @load_attendance.call
-      attendances.each { |a| puts a.clock_in_time }
+      edit_attendances = Service::MakeEditAttendanceService.run(attendances:)
+      puts edit_attendances
       puts '수정 요청 전송을 시작합니다.'
       #@edit_attendance.call
     end
