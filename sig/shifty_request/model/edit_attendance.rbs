@@ -1,7 +1,11 @@
 module ShiftyRequest
   module Model
     class EditAttendance
-      @original_attendance: String
+      attr_reader original_attendance: Attendance
+      attr_reader clock_in_time: String
+      attr_reader clock_out_time: String
+
+      def initialize:(Attendance) -> untyped
     end
   end
 end

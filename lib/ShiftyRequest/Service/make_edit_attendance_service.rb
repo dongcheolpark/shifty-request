@@ -5,11 +5,7 @@ module ShiftyRequest
     class MakeEditAttendanceService
       def run(attendances:)
         attendances.map do |attendance|
-          if attendance.proper_time?
-            next
-          else
-            Model::EditAttendance(attendance)
-          end
+          Model::EditAttendance(attendance)
         end.compact
       end
     end
