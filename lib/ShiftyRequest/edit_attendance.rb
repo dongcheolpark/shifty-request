@@ -3,9 +3,8 @@ require 'httparty'
 require 'json'
 
 module ShiftyRequest
-  class EditAttendance
+  class EditAttendance < APIRequest
     def initialize
-      @url = 'https://shiftee.io/api/request'
       @body =
         {
           "approval_sequence": [
@@ -35,7 +34,7 @@ module ShiftyRequest
     end
 
     def call
-      response = HTTParty.post(@url, headers: BasicHeader.get, body: @body.to_json)
+      response = HTTParty.post(url, headers: headers, body: @body.to_json)
       puts response
     end
   end
