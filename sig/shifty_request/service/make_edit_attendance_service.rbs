@@ -1,11 +1,7 @@
-# frozen_string_literal: true
-
 module ShiftyRequest
   module Service
     class MakeEditAttendanceService
-      def run(attendances:)
-        attendances
-      end
+      def run: (attendances: Array[Model::Attendance]) -> Array[Model::EditAttendance]
     end
   end
 end

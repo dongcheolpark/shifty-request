@@ -1,0 +1,7 @@
+module ShiftyRequest
+  module Model
+    class EditAttendance
+      @original_attendance: String
+    end
+  end
+end
