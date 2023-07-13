@@ -4,14 +4,20 @@ module ShiftyRequest
   module Model
     class EditAttendance
       attr_reader :original_attendance
-      attr_reader :clock_in_time
-      attr_reader :clock_out_time
+
+      WORKING_HOURS = Rational(9 / 24)
 
       def initialize(original_attendance)
-        return nil if original_attendance.proper_time?
         @original_attendance = original_attendance
+      end
 
+      def get_adjusted_clock_time
+        def align_working_hours_with_regular_working_hours
+        end
 
+        return nil if original_attendance.proper_time?
+
+        overtime = original_attendance.clock_time - WORKING_HOURS
       end
     end
   end

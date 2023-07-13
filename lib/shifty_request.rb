@@ -3,6 +3,8 @@
 require 'dotenv/load'
 
 require_relative 'ShiftyRequest/Model/attendance'
+require_relative 'ShiftyRequest/Model/clock_time'
+require_relative 'ShiftyRequest/Model/edit_attendance'
 
 require_relative 'ShiftyRequest/command'
 require_relative 'ShiftyRequest/Request/api_request'

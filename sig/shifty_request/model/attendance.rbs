@@ -1,9 +1,9 @@
 module ShiftyRequest
   module Model
     class Attendance
+
       attr_reader attendance_id: String
-      attr_reader clock_in_time: DateTime
-      attr_reader clock_out_time: DateTime
+      attr_reader clock_time: ClockTime
     end
   end
 end
