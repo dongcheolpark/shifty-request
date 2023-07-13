@@ -1,0 +1,11 @@
+module ShiftyRequest
+  class Command
+    @argv: Array[String]
+    @request: Request
+
+    def initialize:(Array[string]) -> untyped
+    def self.run:(Array[String]) -> untyped
+
+    def run: -> untyped
+  end
+end
