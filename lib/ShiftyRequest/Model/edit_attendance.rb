@@ -26,7 +26,8 @@ module ShiftyRequest
 
         original_clock_time = original_attendance.clock_time
 
-        return nil if original_clock_time.proper_time?
+        return if original_clock_time.proper_time?
+
         result = original_clock_time
           .get_time_aligned_by_start_time
 

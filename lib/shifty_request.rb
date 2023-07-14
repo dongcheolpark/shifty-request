@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'dotenv/load'
+require "dotenv/load"
 
-require_relative 'dependencies'
+require_relative "dependencies"
 
 ShiftyRequest::Command.run(ARGV)
