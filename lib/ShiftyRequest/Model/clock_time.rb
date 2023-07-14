@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "date"
-require "active_support/all"
+require 'date'
+require 'active_support/all'
 
 module ShiftyRequest
   module Model
@@ -16,8 +16,8 @@ module ShiftyRequest
         @out_time = out_time.is_a?(DateTime) ? out_time : Time.parse(out_time)
       end
 
-      def proper_time?(start_at: Time.new(2000, 1, 1, 10, 0, 0, "+9"),
-        end_at: Time.new(2000, 1, 1, 19, 0, 0, "+9"))
+      def proper_time?(start_at: Time.new(2000, 1, 1, 10, 0, 0, '+9'),
+        end_at: Time.new(2000, 1, 1, 19, 0, 0, '+9'))
         @in_time.only_time <= start_at.only_time && end_at.only_time <= @out_time.only_time
       end
 
@@ -29,7 +29,7 @@ module ShiftyRequest
         out_time - in_time
       end
 
-      def get_time_aligned_by_start_time(start_at: Time.new(1, 1, 1, 10, 0, 0, "+9"))
+      def get_time_aligned_by_start_time(start_at: Time.new(1, 1, 1, 10, 0, 0, '+9'))
         start_at = Time.new(
           @in_time.year,
           @in_time.month,
@@ -37,7 +37,7 @@ module ShiftyRequest
           start_at.hour,
           start_at.min,
           start_at.sec,
-          "+9",
+          '+9',
         )
         gap = start_at - @in_time
         self + gap

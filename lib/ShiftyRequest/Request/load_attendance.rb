@@ -4,7 +4,7 @@ module ShiftyRequest
   module Request
     class LoadAttendance < APIRequest
       def url
-        super + "/batch"
+        super + '/batch'
       end
 
       def call
@@ -14,9 +14,9 @@ module ShiftyRequest
       end
 
       def parse_response_body(body:)
-        attendances = body["attendances"]
+        attendances = body['attendances']
         attendances.map do |attendance|
-          if attendance["clock_in_time"].nil? || attendance["clock_out_time"].nil?
+          if attendance['clock_in_time'].nil? || attendance['clock_out_time'].nil?
             next
           else
             Model::Attendance.new(attendance.transform_keys(&:to_sym))
@@ -26,9 +26,9 @@ module ShiftyRequest
 
       def body
         {
-          "attendances": {
-            "date_ranges": [["2023-05-16T00:00:00+09:00", "2023-05-16T23:59:59+09:00"]],
-            "employee_ids": [ENV["EMPLOYEE_ID"].to_i],
+          'attendances': {
+            'date_ranges': [['2023-05-16T00:00:00+09:00', '2023-05-16T23:59:59+09:00']],
+            'employee_ids': [ENV['EMPLOYEE_ID'].to_i],
           },
         }
       end

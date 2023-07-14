@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require "date"
+require 'date'
 
 class DateTime
   def only_time
-    utc.strftime("%H%M%S%N")
+    utc.strftime('%H%M%S%N')
   end
 end

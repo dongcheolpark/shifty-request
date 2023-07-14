@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require "httparty"
-require "json"
+require 'httparty'
+require 'json'
 
 module ShiftyRequest
   module Request
     class EditAttendance < APIRequest
       def url
-        super + "/request"
+        super + '/request'
       end
 
       def call
@@ -17,28 +17,28 @@ module ShiftyRequest
 
       def body
         {
-          "approval_sequence": [
+          'approval_sequence': [
             1,
           ],
-          "requested_employee_ids_sequence": [
+          'requested_employee_ids_sequence': [
             [
               686455,
             ],
           ],
-          "followed_employee_ids_sequence": [
+          'followed_employee_ids_sequence': [
             [],
           ],
-          "data": {
-            "requestType": "edit_attendance",
-            "attendance_id": 56964689,
-            "previous_clock_in_time": "2023-05-15T00:48:31.654Z",
-            "previous_clock_out_time": "2023-05-15T09:51:37.766Z",
-            "clock_in_time": "2023-05-15T00:55:31.654Z",
-            "clock_out_time": "2023-05-15T10:03:37.766Z",
-            "tags": [
-              "past_attendance",
+          'data': {
+            'requestType': 'edit_attendance',
+            'attendance_id': 56964689,
+            'previous_clock_in_time': '2023-05-15T00:48:31.654Z',
+            'previous_clock_out_time': '2023-05-15T09:51:37.766Z',
+            'clock_in_time': '2023-05-15T00:55:31.654Z',
+            'clock_out_time': '2023-05-15T10:03:37.766Z',
+            'tags': [
+              'past_attendance',
             ],
-            "note": "10 to 7",
+            'note': '10 to 7',
           },
         }
       end

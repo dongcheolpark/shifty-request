@@ -6,3 +6,7 @@ Style/Encoding:
 
 Layout/LineLength:
   Max: 99
+
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: single_quotes
