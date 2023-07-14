@@ -4,6 +4,7 @@ require_relative 'ShiftyRequest/Extend/time'
 
 require_relative 'ShiftyRequest/Model/attendance'
 require_relative 'ShiftyRequest/Model/clock_time'
+require_relative 'ShiftyRequest/Model/working_time'
 require_relative 'ShiftyRequest/Model/edit_attendance'
 
 require_relative 'ShiftyRequest/Request/api_request'
