@@ -2,7 +2,7 @@
 
 module ShiftyRequest
   module Service
-    module MakeEditAttendanceService
+    class MakeEditAttendanceService
       def run(attendances:)
         attendances.map do |attendance|
           if attendance.clock_time.proper_time?
