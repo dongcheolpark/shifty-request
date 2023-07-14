@@ -14,7 +14,7 @@ module ShiftyRequest
       end
 
       def to_s
-        "id: #{attendance_id}, clock_time: #{clock_time}"
+        "출퇴근 기록 ID: #{attendance_id}, 출근 시간: #{clock_time.in_time.localtime}, 퇴근 시간: #{clock_time.out_time.localtime}"
       end
     end
   end

@@ -17,7 +17,7 @@ module ShiftyRequest
     def run
       working_time = load_working_time
       edit_attendances = load_attendances_history(working_time:)
-      puts '기록대로 전송하시겠습니까? (Y/N)'
+      puts '해당 기록을 수정하시겠습니까? (Y/N)'
       answer = gets
       if answer == 'Y' || answer == 'y'
         send_edit_request(working_time:, edit_attendances:)
