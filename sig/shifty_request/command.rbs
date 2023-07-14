@@ -9,9 +9,13 @@ module ShiftyRequest
     def initialize:(Array[string]) -> untyped
     def self.run:(Array[String]) -> untyped
 
+    def load_attendances_history: -> Array[Model::EditAttendance]
+
     def load_working_time: -> WorkTime
 
     def run: -> untyped
+
+    def send_edit_request: -> void
 
     def working_time: -> WorkTime
   end
