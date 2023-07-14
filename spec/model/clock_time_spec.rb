@@ -50,7 +50,7 @@ RSpec.describe('clock_time test') do
 
       work_time = clock_time.work_time
 
-      expect(work_time).to(eq(Rational(2, 24)))
+      expect(work_time).to(eq(2.hour))
     end
 
     it '9 시간' do
@@ -61,7 +61,7 @@ RSpec.describe('clock_time test') do
 
       work_time = clock_time.work_time
 
-      expect(work_time).to(eq(Rational(9, 24)))
+      expect(work_time).to(eq(9.hour))
     end
   end
 
@@ -74,7 +74,7 @@ RSpec.describe('clock_time test') do
 
       over_time = clock_time.over_time
 
-      expect(over_time).to(eq(Rational(1, 24)))
+      expect(over_time).to(eq(1.hour))
     end
   end
 

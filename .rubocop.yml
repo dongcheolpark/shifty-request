@@ -10,3 +10,4 @@ Layout/LineLength:
 Style/StringLiterals:
   Enabled: true
   EnforcedStyle: single_quotes
+

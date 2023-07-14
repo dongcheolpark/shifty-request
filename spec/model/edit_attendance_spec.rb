@@ -12,7 +12,7 @@ RSpec.describe('edit_attendance test') do
       )
       edit_attendance = ShiftyRequest::Model::EditAttendance.new(attendance)
 
-      result = edit_attendance.get_adjusted_clock_time
+      result = edit_attendance.adjusted_clock_time
 
       expect(result).to(be_nil)
     end
@@ -28,9 +28,9 @@ RSpec.describe('edit_attendance test') do
         )
         edit_attendance = ShiftyRequest::Model::EditAttendance.new(attendance)
 
-        result = edit_attendance.get_adjusted_clock_time
+        result = edit_attendance.adjusted_clock_time
 
-        expect(result.work_time).to(eq(Rational(10, 24)))
+        expect(result.work_time).to(eq(60 * 60 * 10))
         expect(result.in_time).to(be_between(
           Time.parse('2023-06-05T09:00:00+09:00'),
           Time.parse('2023-06-05T10:00:00+09:00'),

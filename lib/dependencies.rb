@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'ShiftyRequest/Extend/datetime'
+require_relative 'ShiftyRequest/Extend/Time'
 
 require_relative 'ShiftyRequest/Model/attendance'
 require_relative 'ShiftyRequest/Model/clock_time'

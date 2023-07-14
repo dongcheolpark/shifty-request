@@ -9,15 +9,15 @@ module ShiftyRequest
       attr_reader :in_time
       attr_reader :out_time
 
-      WORKING_HOURS = Rational(9, 24)
+      WORKING_HOURS = 9.hour
 
       def initialize(in_time, out_time)
-        @in_time = in_time.is_a?(DateTime) ? in_time : Time.parse(in_time)
-        @out_time = out_time.is_a?(DateTime) ? out_time : Time.parse(out_time)
+        @in_time = in_time.is_a?(Time) ? in_time : Time.parse(in_time)
+        @out_time = out_time.is_a?(Time) ? out_time : Time.parse(out_time)
       end
 
-      def proper_time?(start_at: Time.new(2000, 1, 1, 10, 0, 0, '+9'),
-        end_at: Time.new(2000, 1, 1, 19, 0, 0, '+9'))
+      def proper_time?(start_at: Time.new(2000, 1, 1, 10, 0, 0, '+09:00'),
+        end_at: Time.new(2000, 1, 1, 19, 0, 0, '+09:00'))
         @in_time.only_time <= start_at.only_time && end_at.only_time <= @out_time.only_time
       end
 
@@ -29,7 +29,7 @@ module ShiftyRequest
         out_time - in_time
       end
 
-      def get_time_aligned_by_start_time(start_at: Time.new(1, 1, 1, 10, 0, 0, '+9'))
+      def get_time_aligned_by_start_time(start_at: Time.new(1, 1, 1, 10, 0, 0, '+09'))
         start_at = Time.new(
           @in_time.year,
           @in_time.month,
@@ -37,7 +37,7 @@ module ShiftyRequest
           start_at.hour,
           start_at.min,
           start_at.sec,
-          '+9',
+          '+09',
         )
         gap = start_at - @in_time
         self + gap
