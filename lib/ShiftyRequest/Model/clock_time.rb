@@ -19,7 +19,7 @@ module ShiftyRequest
       def proper_time?(start_at: Time.new(2000, 1, 1, 10, 0, 0, '+09:00'),
         end_at: Time.new(2000, 1, 1, 19, 0, 0, '+09:00'))
         working_time = WorkingTime.new(start_at, end_at)
-        @in_time.only_time <= start_at.only_time && end_at.only_time <= @out_time.only_time
+        @in_time.only_time <= working_time.in_time.only_time && working_time.out_time.only_time <= @out_time.only_time
       end
 
       def over_time
