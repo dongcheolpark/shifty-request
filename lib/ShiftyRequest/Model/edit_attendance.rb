@@ -17,7 +17,7 @@ module ShiftyRequest
             Rational(random_min, 24 * 60)
           end
 
-          overtime = original_attendance.clock_time.over_time
+          overtime = original_attendance.clock_time.over_time(working_time)
           if overtime.positive?
             result -= get_random_offset.call(overtime)
           end

@@ -79,7 +79,7 @@ RSpec.describe('clock_time test') do
         '2023-06-05T20:00:00+09:00', # 1시간 늦게 퇴근
       )
 
-      over_time = clock_time.over_time
+      over_time = clock_time.over_time(working_time)
 
       expect(over_time).to(eq(1.hour))
     end
