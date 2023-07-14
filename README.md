@@ -1,4 +1,7 @@
 # shifty-request
+[![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop)
+[![Ruby Style Guide](https://img.shields.io/badge/code_style-community-brightgreen.svg)](https://github.com/Shopify/ruby-style-guide)
+
 비 공식적인 시프티 출퇴근 기록 수정 요청 도구입니다.
 
 유연 출퇴근제로 인하여 공식적인 회사 출퇴근 기록과 다르게 저장되어 있는 기록들에 대해 한번에 수정 요청을 보낼 수 있습니다.
