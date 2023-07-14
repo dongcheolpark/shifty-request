@@ -1,11 +1,16 @@
 module ShiftyRequest
   class Command
     @argv: Array[String]
-    @edit_attendance: EditAttendance
+    @edit_attendance: Request::EditAttendance
+    @load_attendance: LoadAttendance
+
+    @make_edit_attendance_service: Service::MakeEditAttendanceService
 
     def initialize:(Array[string]) -> untyped
     def self.run:(Array[String]) -> untyped
 
     def run: -> untyped
+
+    def working_time: -> WorkTime
   end
 end
