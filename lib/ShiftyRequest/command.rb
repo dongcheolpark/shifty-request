@@ -17,9 +17,16 @@ module ShiftyRequest
     def run
       puts '출퇴근 기록을 불러옵니다.'
       attendances = @load_attendance.call
-      @make_edit_attendance_service.run(attendances:)
+      edit_attendances = @make_edit_attendance_service.run(attendances:, working_time:)
       puts '수정 요청 전송을 시작합니다.'
-      @make_edit_attendance_service.call(@edit_attendance)
+      @make_edit_attendance_service.call(edit_attendances:, working_time:)
+    end
+
+    def working_time
+      ShiftyRequest::Model::WorkingTime.new(
+        Time.new(1, 1, 1, 10, 0, 0, '+09'),
+        Time.new(1, 1, 1, 19, 0, 0, '+09'),
+      )
     end
   end
 end

@@ -1,6 +1,13 @@
 # frozen_string_literal: true
 
 RSpec.describe('edit_attendance test') do
+  def working_time
+    ShiftyRequest::Model::WorkingTime.new(
+      Time.new(1, 1, 1, 10, 0, 0, '+09'),
+      Time.new(1, 1, 1, 19, 0, 0, '+09'),
+    )
+  end
+
   describe 'get_adjusted_clock_time 테스트' do
     it 'attendance가 적절한 시간을 가지고 있다면' do
       attendance = ShiftyRequest::Model::Attendance.new(
@@ -12,7 +19,7 @@ RSpec.describe('edit_attendance test') do
       )
       edit_attendance = ShiftyRequest::Model::EditAttendance.new(attendance)
 
-      result = edit_attendance.adjusted_clock_time
+      result = edit_attendance.adjusted_clock_time(working_time)
 
       expect(result).to(be_nil)
     end
@@ -28,7 +35,7 @@ RSpec.describe('edit_attendance test') do
         )
         edit_attendance = ShiftyRequest::Model::EditAttendance.new(attendance)
 
-        result = edit_attendance.adjusted_clock_time
+        result = edit_attendance.adjusted_clock_time(working_time)
 
         expect(result.work_time).to(eq(60 * 60 * 10))
         expect(result.in_time).to(be_between(

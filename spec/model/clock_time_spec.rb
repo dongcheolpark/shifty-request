@@ -17,7 +17,7 @@ RSpec.describe('clock_time test') do
         '2023-06-05T19:00:00+09:00',
       )
 
-      expect(clock_time.proper_time?).to(be_truthy)
+      expect(clock_time.proper_time?(working_time)).to(be_truthy)
     end
 
     it '초과근무 했다면' do
@@ -26,7 +26,7 @@ RSpec.describe('clock_time test') do
         '2023-06-05T20:00:00+09:00',
       )
 
-      expect(clock_time.proper_time?).to(be_truthy)
+      expect(clock_time.proper_time?(working_time)).to(be_truthy)
     end
 
     it '1시간 늦게 출근했다면' do
@@ -35,7 +35,7 @@ RSpec.describe('clock_time test') do
         '2023-06-05T19:00:00+09:00',
       )
 
-      expect(clock_time.proper_time?).to(be_falsey)
+      expect(clock_time.proper_time?(working_time)).to(be_falsey)
     end
 
     it '1시간 빨리 퇴근했다면' do
@@ -44,7 +44,7 @@ RSpec.describe('clock_time test') do
         '2023-06-05T18:00:00+09:00',
       )
 
-      expect(clock_time.proper_time?).to(be_falsey)
+      expect(clock_time.proper_time?(working_time)).to(be_falsey)
     end
   end
 
