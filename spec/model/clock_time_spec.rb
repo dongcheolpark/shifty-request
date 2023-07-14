@@ -3,6 +3,13 @@
 require 'ShiftyRequest/Model/clock_time'
 
 RSpec.describe('clock_time test') do
+  def working_time
+    ShiftyRequest::Model::WorkingTime.new(
+      Time.new(1, 1, 1, 10, 0, 0, '+09'),
+      Time.new(1, 1, 1, 19, 0, 0, '+09'),
+    )
+  end
+
   describe 'proper_time 메소드' do
     it '10 to 7을 지켰다면' do
       clock_time = ShiftyRequest::Model::ClockTime.new(
