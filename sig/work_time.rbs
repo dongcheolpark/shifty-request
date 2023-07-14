@@ -1,4 +1,0 @@
-class WorkTime
-  attr_reader clock_in_time: DateTime
-  attr_reader clock_out_time: DateTime
-end
