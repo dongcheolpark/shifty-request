@@ -9,20 +9,17 @@ module ShiftyRequest
       attr_reader :in_time
       attr_reader :out_time
 
-      WORKING_HOURS = 9.hour
-
       def initialize(in_time, out_time)
         @in_time = in_time.is_a?(Time) ? in_time : Time.parse(in_time)
         @out_time = out_time.is_a?(Time) ? out_time : Time.parse(out_time)
       end
 
-      def proper_time?(start_at: Time.new(2000, 1, 1, 10, 0, 0, '+09:00'),
-        end_at: Time.new(2000, 1, 1, 19, 0, 0, '+09:00'))
-        @in_time.only_time <= start_at.only_time && end_at.only_time <= @out_time.only_time
+      def proper_time?(working_time)
+        @in_time.only_time <= working_time.in_time.only_time && working_time.out_time.only_time <= @out_time.only_time
       end
 
-      def over_time
-        work_time - WORKING_HOURS
+      def over_time(working_time)
+        work_time - working_time.working_hours
       end
 
       def work_time

@@ -1,6 +1,13 @@
 # frozen_string_literal: true
 
 RSpec.describe('make_edit_attendance_service test') do
+  def working_time
+    ShiftyRequest::Model::WorkingTime.new(
+      Time.new(1, 1, 1, 10, 0, 0, '+09'),
+      Time.new(1, 1, 1, 19, 0, 0, '+09'),
+    )
+  end
+
   describe('run 메소드') do
     it '잘 변환되어야 함' do
       attendances = [
@@ -21,7 +28,7 @@ RSpec.describe('make_edit_attendance_service test') do
       ]
       make_edit_attendance_service = ShiftyRequest::Service::MakeEditAttendanceService.new
 
-      edit_attendances = make_edit_attendance_service.run(attendances:)
+      edit_attendances = make_edit_attendance_service.run(attendances:, working_time:)
 
       expect(edit_attendances.length).to(be(2))
       expect(edit_attendances[0].original_attendance.attendance_id).to(eq('1'))
@@ -47,7 +54,7 @@ RSpec.describe('make_edit_attendance_service test') do
       ]
       make_edit_attendance_service = ShiftyRequest::Service::MakeEditAttendanceService.new
 
-      edit_attendances = make_edit_attendance_service.run(attendances:)
+      edit_attendances = make_edit_attendance_service.run(attendances:, working_time:)
 
       expect(edit_attendances.length).to(be(0))
     end

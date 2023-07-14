@@ -3,6 +3,13 @@
 require 'ShiftyRequest/Model/clock_time'
 
 RSpec.describe('clock_time test') do
+  def working_time
+    ShiftyRequest::Model::WorkingTime.new(
+      Time.new(1, 1, 1, 10, 0, 0, '+09'),
+      Time.new(1, 1, 1, 19, 0, 0, '+09'),
+    )
+  end
+
   describe 'proper_time 메소드' do
     it '10 to 7을 지켰다면' do
       clock_time = ShiftyRequest::Model::ClockTime.new(
@@ -10,7 +17,7 @@ RSpec.describe('clock_time test') do
         '2023-06-05T19:00:00+09:00',
       )
 
-      expect(clock_time.proper_time?).to(be_truthy)
+      expect(clock_time.proper_time?(working_time)).to(be_truthy)
     end
 
     it '초과근무 했다면' do
@@ -19,7 +26,7 @@ RSpec.describe('clock_time test') do
         '2023-06-05T20:00:00+09:00',
       )
 
-      expect(clock_time.proper_time?).to(be_truthy)
+      expect(clock_time.proper_time?(working_time)).to(be_truthy)
     end
 
     it '1시간 늦게 출근했다면' do
@@ -28,7 +35,7 @@ RSpec.describe('clock_time test') do
         '2023-06-05T19:00:00+09:00',
       )
 
-      expect(clock_time.proper_time?).to(be_falsey)
+      expect(clock_time.proper_time?(working_time)).to(be_falsey)
     end
 
     it '1시간 빨리 퇴근했다면' do
@@ -37,7 +44,7 @@ RSpec.describe('clock_time test') do
         '2023-06-05T18:00:00+09:00',
       )
 
-      expect(clock_time.proper_time?).to(be_falsey)
+      expect(clock_time.proper_time?(working_time)).to(be_falsey)
     end
   end
 
@@ -72,7 +79,7 @@ RSpec.describe('clock_time test') do
         '2023-06-05T20:00:00+09:00', # 1시간 늦게 퇴근
       )
 
-      over_time = clock_time.over_time
+      over_time = clock_time.over_time(working_time)
 
       expect(over_time).to(eq(1.hour))
     end

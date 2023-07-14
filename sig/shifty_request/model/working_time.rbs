@@ -1,0 +1,9 @@
+module ShiftyRequest
+  module Model
+    class WorkingTime
+      attr_reader in_time: Time
+      attr_reader out_time: Time
+      attr_reader working_hours: Numeric
+    end
+  end
+end

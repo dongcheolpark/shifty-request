@@ -3,9 +3,9 @@
 module ShiftyRequest
   module Service
     class MakeEditAttendanceService
-      def run(attendances:)
+      def run(attendances:, working_time:)
         attendances.map do |attendance|
-          if attendance.clock_time.proper_time?
+          if attendance.clock_time.proper_time?(working_time)
             next
           else
             Model::EditAttendance.new(attendance)
