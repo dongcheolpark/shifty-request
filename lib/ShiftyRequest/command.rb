@@ -10,15 +10,16 @@ module ShiftyRequest
     def initialize(argv)
       @edit_attendance = Request::EditAttendance.new
       @load_attendance = Request::LoadAttendance.new
+      @make_edit_attendance_service = Service::MakeEditAttendanceService.new
       @argv = argv
     end
 
     def run
       puts '출퇴근 기록을 불러옵니다.'
       attendances = @load_attendance.call
-      Service::MakeEditAttendanceService.run(attendances:)
+      @make_edit_attendance_service.run(attendances:)
       puts '수정 요청 전송을 시작합니다.'
-      # @edit_attendance.call
+      @edit_attendance.call
     end
   end
 end

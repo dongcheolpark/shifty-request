@@ -6,6 +6,7 @@ gem 'httparty'
 gem 'rake'
 gem 'rbs'
 gem 'dotenv'
+gem 'simplecov'
 gem 'rubocop', require: false
 gem 'rubocop-shopify', require: false
 group :development, :test do
