@@ -9,9 +9,9 @@ module ShiftyRequest
         @original_attendance = original_attendance
       end
 
-      def get_adjusted_clock_time
-        def move_randomly_for_the_excess_time(result)
-          def get_random_offset(overtime)
+      def adjusted_clock_time
+        move_randomly_for_the_excess_time = ->(result) do
+          get_random_offset = ->(overtime) do
             min = (overtime * 24 * 60).to_i
             random_min = rand(0..min)
             Rational(random_min, 24 * 60)
@@ -19,23 +19,24 @@ module ShiftyRequest
 
           overtime = original_attendance.clock_time.over_time
           if overtime.positive?
-            result -= get_random_offset(overtime)
+            result -= get_random_offset.call(overtime)
           end
           result
         end
 
         original_clock_time = original_attendance.clock_time
 
-        return nil if original_clock_time.proper_time?
+        return if original_clock_time.proper_time?
+
         result = original_clock_time
           .get_time_aligned_by_start_time
 
-        result = move_randomly_for_the_excess_time(result)
+        result = move_randomly_for_the_excess_time.call(result)
         result
       end
 
       def to_s
-        "origin_attendance: #{original_attendance}, clock_time: #{get_adjusted_clock_time}"
+        "origin_attendance: #{original_attendance}, clock_time: #{adjusted_clock_time}"
       end
     end
   end

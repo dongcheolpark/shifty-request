@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'httparty'
 require 'json'
 
@@ -9,40 +10,37 @@ module ShiftyRequest
         super + '/request'
       end
 
-      def call(edit_attendances)
-        edit_attendances.each do |attendance|
-          response = HTTParty.post(url, headers: headers, body: body(attendance))
-          puts response
-        end
+      def call
+        response = HTTParty.post(url, headers: headers, body: body.to_json)
+        puts response
       end
 
-      def body(edit_attendance)
-        edit_time = edit_attendance.get_adjusted_clock_time
+      def body
         {
-          "approval_sequence": [
+          'approval_sequence': [
             1,
           ],
-          "requested_employee_ids_sequence": [
+          'requested_employee_ids_sequence': [
             [
-              ENV['REQUESTED_EMPLOYEE_ID'],
+              686455,
             ],
           ],
-          "followed_employee_ids_sequence": [
+          'followed_employee_ids_sequence': [
             [],
           ],
-          data: {
-            "requestType": 'edit_attendance',
-            "attendance_id": edit_attendance.original_attendance.attendance_id,
-            "previous_clock_in_time": edit_attendance.original_attendance.clock_time.in_time.to_s,
-            "previous_clock_out_time": edit_attendance.original_attendance.clock_time.out_time.to_s,
-            "clock_in_time": edit_time.in_time.to_s,
-            "clock_out_time": edit_time.out_time.to_s,
-            "tags": [
+          'data': {
+            'requestType': 'edit_attendance',
+            'attendance_id': 56964689,
+            'previous_clock_in_time': '2023-05-15T00:48:31.654Z',
+            'previous_clock_out_time': '2023-05-15T09:51:37.766Z',
+            'clock_in_time': '2023-05-15T00:55:31.654Z',
+            'clock_out_time': '2023-05-15T10:03:37.766Z',
+            'tags': [
               'past_attendance',
             ],
-            "note": '10 to 7',
+            'note': '10 to 7',
           },
-        }.to_json
+        }
       end
     end
   end
