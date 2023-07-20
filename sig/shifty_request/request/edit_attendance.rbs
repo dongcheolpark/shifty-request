@@ -1,9 +1,9 @@
 module ShiftyRequest
   module Request
     class EditAttendance
-      def body: (Model::EditAttendance) -> Hash[untyped, String]
+      def body: (Model::EditAttendance, Model::WorkingTime) -> Hash[untyped, String]
 
-      def call: (Array[Model::EditAttendance]) -> untyped
+      def call: (edit_attendances: Array[Model::EditAttendance], working_time: Model::WorkingTime) -> untyped
 
       def url: -> String
     end

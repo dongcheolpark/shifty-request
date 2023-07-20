@@ -10,8 +10,9 @@ module ShiftyRequest
         super + '/request'
       end
 
-      def call(edit_attendances, working_time)
+      def call(edit_attendances:, working_time:)
         edit_attendances.each do |attendance|
+          puts body(attendance, working_time)
           response = HTTParty.post(url, headers: headers, body: body(attendance, working_time))
           puts response
         end
@@ -34,14 +35,14 @@ module ShiftyRequest
           data: {
             'requestType': 'edit_attendance',
             'attendance_id': edit_attendance.original_attendance.attendance_id,
-            'previous_clock_in_time': edit_attendance.original_attendance.clock_time.in_time.to_s(working_time),
-            'previous_clock_out_time': edit_attendance.original_attendance.clock_time.out_time.to_s(working_time),
-            'clock_in_time': edit_time.in_time.to_s(working_time),
-            'clock_out_time': edit_time.out_time.to_s(working_time),
+            'previous_clock_in_time': edit_attendance.original_attendance.clock_time.in_time,
+            'previous_clock_out_time': edit_attendance.original_attendance.clock_time.out_time,
+            'clock_in_time': edit_time.in_time,
+            'clock_out_time': edit_time.out_time,
             'tags': [
               'past_attendance',
             ],
-            'note': '10 to 7',
+            'note': "#{working_time.in_time.localtime.hour} to #{working_time.out_time.localtime.hour}",
           },
         }.to_json
       end

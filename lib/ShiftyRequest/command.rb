@@ -16,12 +16,12 @@ module ShiftyRequest
 
     def run
       working_time = load_working_time
-      puts '출퇴근 기록을 불러옵니다.'
-      attendances = @load_attendance.call
-      edit_attendances = @make_edit_attendance_service.run(attendances:, working_time:)
-      puts edit_attendances
-      puts '수정 요청 전송을 시작합니다.'
-      # @edit_attendance.call(edit_attendances:, working_time:)
+      edit_attendances = load_attendances_history(working_time:)
+      puts '해당 기록을 수정하시겠습니까? (Y/N)'
+      answer = gets.chomp
+      if answer == 'Y' || answer == 'y'
+        send_edit_request(working_time:, edit_attendances:)
+      end
     end
 
     def load_working_time
@@ -30,6 +30,19 @@ module ShiftyRequest
         Time.parse(ENV['WORK_START_TIME']),
         Time.parse(ENV['WORK_FINISH_TIME']),
       )
+    end
+
+    def load_attendances_history(working_time:)
+      puts '출퇴근 기록을 불러옵니다.'
+      attendances = @load_attendance.call
+      result = @make_edit_attendance_service.run(attendances:, working_time:)
+      puts result
+      result
+    end
+
+    def send_edit_request(edit_attendances:, working_time:)
+      puts '수정 요청 전송을 시작합니다.'
+      @edit_attendance.call(edit_attendances:, working_time:)
     end
   end
 end

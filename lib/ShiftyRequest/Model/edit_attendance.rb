@@ -36,7 +36,7 @@ module ShiftyRequest
       end
 
       def to_s(working = nil)
-        result = "origin_attendance: #{original_attendance}"
+        result = "수정 전 출퇴근 기록: #{original_attendance}"
         result += "clock_time: #{adjusted_clock_time(working)}" unless working.nil?
         result
       end
