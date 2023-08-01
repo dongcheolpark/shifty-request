@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'date'
+
 module ShiftyRequest
   module Request
     class LoadAttendance < APIRequest
@@ -7,8 +9,8 @@ module ShiftyRequest
         super + '/batch'
       end
 
-      def call
-        response = HTTParty.post(url, headers: headers, body: body.to_json)
+      def request(edit_month:)
+        response = HTTParty.post(url, headers: headers, body: body(edit_month:).to_json)
 
         parse_response_body(body: JSON.parse(response.body))
       end
@@ -24,10 +26,13 @@ module ShiftyRequest
         end.compact
       end
 
-      def body
+      def body(edit_month:)
         {
           'attendances': {
-            'date_ranges': [['2023-07-01T00:00:00+09:00', '2023-07-30T23:59:59+09:00']],
+            'date_ranges': [[
+              edit_month.beginning_of_month.iso8601,
+              edit_month.end_of_month.iso8601,
+            ]],
             'employee_ids': [ENV['EMPLOYEE_ID'].to_i],
           },
         }
