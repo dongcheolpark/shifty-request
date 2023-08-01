@@ -15,13 +15,33 @@ module ShiftyRequest
     end
 
     def run
+      edit_month = load_edit_month
+
       working_time = load_working_time
       edit_attendances = load_attendances_history(working_time:)
+
       puts '해당 기록을 수정하시겠습니까? (Y/N)'
       answer = gets.chomp
       if answer == 'Y' || answer == 'y'
         send_edit_request(working_time:, edit_attendances:)
       end
+    end
+
+    def load_edit_month
+      puts '수정할 출퇴근 기록의 기간을 선택해주세요.'
+      puts "1. 저번 달 (#{Date.today.prev_month.strftime("%Y년 %m월")})"
+      puts "2. 이번 달 (#{Date.today.strftime("%Y년 %m월")})"
+      answer = gets.chomp
+
+      result = if answer == '1'
+        Date.today.prev_month
+      elsif answer == '2'
+        Date.today.beginning_of_month
+      else
+        puts '잘못된 입력입니다.'
+        load_edit_month
+      end
+      result
     end
 
     def load_working_time
