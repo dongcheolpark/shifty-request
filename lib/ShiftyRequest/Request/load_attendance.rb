@@ -12,7 +12,21 @@ module ShiftyRequest
       def request(edit_month:)
         response = HTTParty.post(url, headers: headers, body: body(edit_month:).to_json)
 
+        if is_token_expired?(response:)
+          throw(Exception.new('인증 토큰이 만료되었습니다.'))
+        end
+
         parse_response_body(body: JSON.parse(response.body))
+      end
+
+      private
+
+      def is_token_expired?(response:)
+        unless response.respond_to?(:match)
+          return false
+        end
+
+        response&.match(/ExpiredAuthToken/).present?
       end
 
       def parse_response_body(body:)
