@@ -31,12 +31,10 @@ module ShiftyRequest
 
       def parse_response_body(body:)
         attendances = body['attendances']
-        attendances.map do |attendance|
-          if attendance['clock_in_time'].nil? || attendance['clock_out_time'].nil?
-            next
-          else
-            Model::Attendance.new(attendance.transform_keys(&:to_sym))
-          end
+        attendances.filter do |attendance|
+          attendance['clock_in_time'].present? && attendance['clock_out_time'].present?
+        end.map do |attendance|
+          Model::Attendance.new(attendance.transform_keys(&:to_sym))
         end.compact
       end
 
