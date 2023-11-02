@@ -5,6 +5,8 @@ module ShiftyRequest
     class << self
       def run(argv)
         new(argv).run
+      rescue => e
+        puts e.message
       end
     end
     def initialize(argv)
