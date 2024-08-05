@@ -31,7 +31,6 @@ module ShiftyRequest
 
       def move_randomly_for_the_excess_time(clock_time, working_time)
         overtime = original_attendance.clock_time.over_time(working_time)
-        overtime = overtime > 0 ? overtime : 3
         if overtime.positive?
           clock_time - get_random_offset(overtime)
         end
