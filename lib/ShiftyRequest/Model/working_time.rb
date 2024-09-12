@@ -12,6 +12,10 @@ module ShiftyRequest
         @out_time = out_time.is_a?(Time) ? out_time : Time.parse(out_time)
         @working_hours = out_time - in_time
       end
+
+      def /(value)
+        WorkingTime.new(in_time, in_time + (working_hours / value))
+      end
     end
   end
 end

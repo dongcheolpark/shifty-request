@@ -20,7 +20,9 @@ module ShiftyRequest
       edit_month = load_edit_month
 
       working_time = load_working_time
-      edit_attendances = load_attendances_history(working_time:, edit_month:)
+      attendances = load_attendances_history(working_time:, edit_month:)
+      edit_attendances =  @make_edit_attendance_service.run(attendances:, working_time:)
+      puts edit_attendances.map { |attendance| attendance.to_s(working_time) }
 
       puts '해당 기록을 수정하시겠습니까? (Y/N)'
       answer = gets.chomp
@@ -56,10 +58,7 @@ module ShiftyRequest
 
     def load_attendances_history(working_time:, edit_month:)
       puts '출퇴근 기록을 불러옵니다.'
-      attendances = @load_attendance.request(edit_month:)
-      result = @make_edit_attendance_service.run(attendances:, working_time:)
-      puts result
-      result
+      @load_attendance.request(edit_month:)
     end
 
     def send_edit_request(edit_attendances:, working_time:)
