@@ -22,7 +22,7 @@ module ShiftyRequest
       working_time = load_working_time
       attendances = load_attendances_history(working_time:, edit_month:)
       edit_attendances =  @make_edit_attendance_service.run(attendances:, working_time:)
-      puts edit_attendances
+      puts edit_attendances.map { |attendance| attendance.to_s(working_time) }
 
       puts '해당 기록을 수정하시겠습니까? (Y/N)'
       answer = gets.chomp

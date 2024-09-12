@@ -49,7 +49,7 @@ module ShiftyRequest
       end
 
       def to_s
-        "\"in_time : #{in_time}, out_time : #{out_time}\""
+        "\"in_time : #{in_time.getlocal}, out_time : #{out_time.getlocal}\, work_time : #{(work_time / (60 * 60)).round(2)} 시간\""
       end
     end
   end
