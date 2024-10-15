@@ -148,6 +148,7 @@ GEM
 PLATFORMS
   arm64-darwin-21
   arm64-darwin-22
+  arm64-darwin-23
 
 DEPENDENCIES
   dotenv
@@ -164,4 +165,4 @@ DEPENDENCIES
   simplecov
 
 BUNDLED WITH
-   2.3.10
+   2.5.21
